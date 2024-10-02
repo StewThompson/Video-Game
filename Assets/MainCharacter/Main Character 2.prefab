@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6793349024836954506}
   - component: {fileID: 2083720632800660878}
   - component: {fileID: 4485792951878332027}
+  - component: {fileID: 7236584532966331787}
+  - component: {fileID: 220278732637586680}
   m_Layer: 0
   m_Name: Main Character 2
   m_TagString: Player
@@ -50,9 +52,13 @@ MonoBehaviour:
   lateralMoveSpeed: 8
   verticalMoveSpeed: 20
   myRigidBody: {fileID: 0}
-  fire: {fileID: 1014792658786831404, guid: 731f645859a1d6e4184e3c342302da32, type: 3}
   grdspawner: {fileID: 0}
   EndScreen: {fileID: 0}
+  CanTakeDamage: 0
+  DashDelay: 1
+  DashDuration: 0.05
+  AccelerationTime: 0.3
+  DashSpeed: 20
 --- !u!212 &6793349024836954506
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -161,3 +167,70 @@ CapsuleCollider2D:
   m_Offset: {x: 0.21808828, y: 0}
   m_Size: {x: 3.974679, y: 8.4}
   m_Direction: 0
+--- !u!114 &7236584532966331787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975129461451727668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd95bc31f84055439bccfac7deab15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fire: {fileID: 1014792658786831404, guid: 731f645859a1d6e4184e3c342302da32, type: 3}
+  tornado: {fileID: 5611169084595707486, guid: cd43d6eb223a886428e4fc971ca46f3b, type: 3}
+  dummy: {fileID: 4106967144069191874, guid: 7fc30cd74f5aa724387df7546e0f3d5b, type: 3}
+  shield: {fileID: 0}
+  lightning: {fileID: 9125532323222325399, guid: f1d0adb06ed3e3343a0ecf1a477e68ae, type: 3}
+  buttons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  DummyActivationTime: 15
+--- !u!61 &220278732637586680
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975129461451727668}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.20751864, y: -0.5093641}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.33, y: 8.4}
+    newSize: {x: 4.46, y: 5.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.8775043, y: 9.418728}
+  m_EdgeRadius: 0
