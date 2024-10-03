@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
@@ -241,10 +242,12 @@ public class InventoryItemSystem : MonoBehaviour
         int slotPos = -1;
         for(int i = 1; i <= 23; i++)
         {
+ 
             if (itemInSlots[i] == null || itemInSlots[i].id == itemInSlots[id].id)
             {
-                float dist = Vector2.Distance(slotPositions[i], itemInSlots[id].sprite.transform.localPosition);
-                if(dist < shortestDistance) { nearestSlot = slotPositions[i]; slotPos = i; shortestDistance = dist; }
+                //Debug.Log("i is " + i);
+                float dist = Vector2.Distance(pixelPosition[i-1].localPosition, itemInSlots[id].sprite.transform.localPosition);
+                if(dist < shortestDistance) { nearestSlot = pixelPosition[i-1].position; slotPos = i; shortestDistance = dist; }
                 searchSucess = true;
             }
            
@@ -267,11 +270,20 @@ public class InventoryItemSystem : MonoBehaviour
         float mouseActualY = 1080 * mousePos.y / ScreenResolution.height;
         float translateXToReal = (mouseActualX - 960) / 110;
         float translateYToReal = (mouseActualY - 540) / 90;*/
-        Vector2 actual = Camera.main.ScreenToWorldPoint(mousePos);
+        RectTransform canvasRect = MyCanvas.GetComponent<RectTransform>();
+
+        // Convert the mouse position to local canvas space
+        Vector3 worldPoint;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            canvasRect,
+            mousePos,
+            mainCamera.GetComponent<Camera>(), // Pass the camera rendering the UI (if using world space canvas)
+            out worldPoint
+        );
 
 
 
-        return actual;
+        return worldPoint-mainCamera.transform.position;
        // return new Vector2(translateXToReal,translateYToReal+1);
     } 
 
@@ -299,11 +311,12 @@ public class InventoryItemSystem : MonoBehaviour
         RectTransformUtility.ScreenPointToWorldPointInRectangle(
             canvasRect,
             mousePosition,
-            Camera.main, // Pass the camera rendering the UI (if using world space canvas)
+            mainCamera.GetComponent<Camera>(), // Pass the camera rendering the UI (if using world space canvas)
             out worldPoint
         );
-        Debug.Log("WorldMousePos" + worldPoint);  
-        float fixedDelta = 1;
+        //Debug.Log("WorldMousePos" + worldPoint);
+        //Debug.Log("AdjustPosX" + (worldPoint.x-mainCamera.transform.position.x)+ " and AdjustPosY" + (worldPoint.y - mainCamera.transform.position.y));
+        float fixedDelta = .5f;
         
         for (int i = 0; i <= 22; i++)
         {
@@ -311,17 +324,27 @@ public class InventoryItemSystem : MonoBehaviour
             {
                 
                 Vector3 slotLocalPos = pixelPosition[i].localPosition; // Assuming it's a RectTransform
-                float xDiff = slotLocalPos.x+mainCamera.transform.position.x - worldPoint.x;
-                float yDiff = slotLocalPos.y + mainCamera.transform.position.y - worldPoint.y;
-                if (i == 0) { Debug.Log("For i: " + i + " Xdiff: " + xDiff + " Ydiff: " + yDiff + " Pixel Position.x " + pixelPosition[i].localPosition.x); }
-                else if (i == 1) { Debug.Log("For i: " + i + " Xdiff: " + xDiff + " Ydiff: " + yDiff + " Pixel Position.x " + pixelPosition[i].localPosition.x); }
-                if ((-xDiff <= fixedDelta && xDiff > 0 ) && (yDiff <= fixedDelta && yDiff > 0))
+                float xDiff = -mainCamera.transform.position.x + worldPoint.x;
+                float yDiff = -mainCamera.transform.position.y + worldPoint.y;
+                //Debug.Log("For i: " + i + " Xdiff: " + xDiff + " Ydiff: " + yDiff + " Pixel Position.x " + pixelPosition[i].localPosition.x);
+                if (isPointInside(fixedDelta, pixelPosition[i].localPosition, new Vector2(xDiff, yDiff)))
                 {
-                    return i;
+                    Debug.Log("First slot found " + i);
+                    return i+1;
                 }
             }
         }
         return -1;
+    }
+    private bool isPointInside(float sideLength, Vector2 slotPosition, Vector2 mousePos)
+    {
+        float halfLength = sideLength / 2;
+        float xMin = slotPosition.x - sideLength;
+        float xMax = slotPosition.x + sideLength;
+        float yMin = slotPosition.y - sideLength;
+        float yMax = slotPosition.y + sideLength;
+       // Debug.Log("Xmin" + xMin + "Xmax" + xMax + "yMin" + yMin + "yMax" + yMax);
+        return (mousePos.x >= xMin && mousePos.x <= xMax && mousePos.y >= yMin && mousePos.y <= yMax);
     }
     public void AddItem(int id,int amount,int slot)
     {
@@ -347,7 +370,8 @@ public class InventoryItemSystem : MonoBehaviour
     private void Visualize(int Slot)
     {
         String itemName = idToName[itemInSlots[Slot].id];
-        Vector2 slotVector = slotPositions[Slot];
+        Vector2 slotVector = pixelPosition[Slot-1].localPosition;
+        slotVector = new Vector2(slotVector.x, slotVector.y-0.20f); //Change based on where icon needs to be
         float scale = idToScale[itemInSlots[Slot].id];
        
         GenerateSprite(slotVector, Slot, itemName,scale);
@@ -393,7 +417,7 @@ public class InventoryItemSystem : MonoBehaviour
             GameObject amountItem = (AssetDatabase.LoadAssetAtPath<GameObject>("Assets/UI/AmountItem.prefab"));
             GameObject label = Instantiate(amountItem) as GameObject;
             label.transform.SetParent(target.transform);
-            label.transform.localPosition = new Vector2(slotVector.x, slotVector.y - 0.15f);
+            label.transform.localPosition = new Vector2(slotVector.x, slotVector.y - 0.10f);
             label.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             label.GetComponent<Text>().text = itemInSlots[Slot].howMany.ToString();
             itemAmountTags[Slot] = label.GetComponent<Text>();
@@ -402,7 +426,7 @@ public class InventoryItemSystem : MonoBehaviour
             {
                 GameObject hotbarLabel = Instantiate(amountItem);
                 hotbarLabel.transform.SetParent(hotbar.transform);
-                hotbarLabel.transform.localPosition = new Vector2(HotBarSlots[Slot].x, HotBarSlots[Slot].y - 0.15f);
+                hotbarLabel.transform.localPosition = new Vector2(HotBarSlots[Slot].x, HotBarSlots[Slot].y - 0.10f);
                 hotbarLabel.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
                 hotbarLabel.GetComponent<Text>().text = itemInSlots[Slot].howMany.ToString();
                 hotBarTags[Slot] = hotbarLabel.GetComponent<Text>();

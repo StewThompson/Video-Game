@@ -379,6 +379,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.21f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Derender.cs"
 "Assets/DummyAI.cs"
+"Assets/Enemies/BossOneAI.cs"
 "Assets/Enemies/EnemyAI.cs"
 "Assets/fire.cs"
 "Assets/Ideas.cs"

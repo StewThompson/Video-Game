@@ -10,6 +10,8 @@ public class MainCharacter : MonoBehaviour
     public float lateralMoveSpeed = 5;
     public float verticalMoveSpeed = 5;
     public Rigidbody2D myRigidBody;
+    public GameObject[] dashPuff;
+    private GameObject lastPuff;
    
     private int mana = 10;
     private float manaTimer;
@@ -44,12 +46,20 @@ public class MainCharacter : MonoBehaviour
         public int HealthCount;
         public int TotalHealth;
         public int CurrentHealth;
+
     }
 
 
     private void Start()
     {
         anime = GetComponent<Animator>();
+    }
+    private void CreatePuff(int direction)
+    {
+        lastPuff = dashPuff[direction];
+        lastPuff.SetActive(true);
+        if (direction == 0) { lastPuff.transform.position =  new Vector2((transform.parent.position.x + 1.5f * transform.parent.localScale.x), transform.parent.position.y); }
+        else { lastPuff.transform.position = new Vector2((transform.parent.position.x  - 1.5f * transform.parent.localScale.x), transform.parent.position.y); }
     }
     void Update()
     {
@@ -60,10 +70,14 @@ public class MainCharacter : MonoBehaviour
         if (DashTimer <= 0 && Input.GetKey(KeyCode.Q))
         {
             StartCoroutine(SmoothDash(-1));
+            if (transform.parent.localScale.x > 0) { CreatePuff(0);}//dashPuff[0].SetActive(true); 
+            else { CreatePuff(1);}//dashPuff[1].SetActive(true); 
         }
         else if (DashTimer <= 0 && Input.GetKey(KeyCode.E))
         {
             StartCoroutine(SmoothDash(1));
+            if (transform.parent.localScale.x > 0) { CreatePuff(1); }//dashPuff[1].SetActive(true);
+            else { CreatePuff(0);  }//dashPuff[0].SetActive(true);
         }
         else if (DashTimer > 0)
         {
@@ -121,6 +135,9 @@ public class MainCharacter : MonoBehaviour
         }
 
         // Stop dashing and return control
+        //dashPuff[0].SetActive(false);
+        //dashPuff[1].SetActive(false);
+        lastPuff.SetActive(false);
         isDashing = false;
     }
 
