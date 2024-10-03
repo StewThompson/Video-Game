@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
+using Input = UnityEngine.Input;
 
 
 public class MainCharacter : MonoBehaviour
@@ -13,6 +10,8 @@ public class MainCharacter : MonoBehaviour
     public float lateralMoveSpeed = 5;
     public float verticalMoveSpeed = 5;
     public Rigidbody2D myRigidBody;
+    public GameObject[] dashPuff;
+    private GameObject lastPuff;
    
     private int mana = 10;
     private float manaTimer;
@@ -27,7 +26,9 @@ public class MainCharacter : MonoBehaviour
     private float HealthRegenTimer = 5;
     private float ManaRegenTimer = 5;
     public GameObject EndScreen;
-    public bool CanTakeDamage = true; 
+    public bool CanTakeDamage = true;
+    public float DashDelay;
+    private float DashTimer;
 
 
     public class ManaStatus : EventArgs
@@ -45,6 +46,7 @@ public class MainCharacter : MonoBehaviour
         public int HealthCount;
         public int TotalHealth;
         public int CurrentHealth;
+
     }
 
 
@@ -52,33 +54,45 @@ public class MainCharacter : MonoBehaviour
     {
         anime = GetComponent<Animator>();
     }
+    private void CreatePuff(int direction)
+    {
+        lastPuff = dashPuff[direction];
+        lastPuff.SetActive(true);
+        if (direction == 0) { lastPuff.transform.position =  new Vector2((transform.parent.position.x + 1.5f * transform.parent.localScale.x), transform.parent.position.y); }
+        else { lastPuff.transform.position = new Vector2((transform.parent.position.x  - 1.5f * transform.parent.localScale.x), transform.parent.position.y); }
+    }
     void Update()
     {
-        
-       
+
         // Vertical movement
         var inputX = Input.GetAxisRaw("Horizontal");
-        myRigidBody.velocity = new Vector2(inputX * lateralMoveSpeed, myRigidBody.velocity.y);
-        
-        if (Input.GetKey(KeyCode.W) && isGrounded)
-
+        if (!isDashing) { myRigidBody.velocity = new Vector2(inputX * lateralMoveSpeed, myRigidBody.velocity.y); }
+        if (DashTimer <= 0 && Input.GetKey(KeyCode.Q))
         {
-            
-            myRigidBody.velocity = new Vector2(myRigidBody.velocity.x, verticalMoveSpeed);
+            StartCoroutine(SmoothDash(-1));
+            if (transform.parent.localScale.x > 0) { CreatePuff(0);}//dashPuff[0].SetActive(true); 
+            else { CreatePuff(1);}//dashPuff[1].SetActive(true); 
+        }
+        else if (DashTimer <= 0 && Input.GetKey(KeyCode.E))
+        {
+            StartCoroutine(SmoothDash(1));
+            if (transform.parent.localScale.x > 0) { CreatePuff(1); }//dashPuff[1].SetActive(true);
+            else { CreatePuff(0);  }//dashPuff[0].SetActive(true);
+        }
+        else if (DashTimer > 0)
+        {
+            DashTimer -= Time.deltaTime;
         }
 
-        // Lateral movement
-        if (inputX !=0)
-        {
-            
+        if (Input.GetKey(KeyCode.W) && isGrounded)
 
-            transform.localScale = new Vector3(Mathf.Sign(inputX),1,1);
+        {   
+            myRigidBody.velocity = new Vector2(myRigidBody.velocity.x, verticalMoveSpeed);
         }
     
         anime.SetBool("IsWalking", inputX != 0);
         anime.SetBool("IsInAir", !isGrounded);
 
-        //attack
         
         if(TeleportTimer<=0 && Input.GetKey(KeyCode.R)) {
             transform.parent.position = new Vector2(-105f, 4f);
@@ -91,6 +105,42 @@ public class MainCharacter : MonoBehaviour
         HealthRegen();
         
     }
+    public float DashDuration;
+    public float AccelerationTime;
+    public float DashSpeed;
+    private bool isDashing;
+    private IEnumerator SmoothDash(int direction)
+    {
+        isDashing = true;
+        float timeElapsed = 0f;
+        float currentSpeed = 0f;
+        DashTimer =DashDelay;
+
+        // Accelerate
+        while (timeElapsed < AccelerationTime)
+        {
+            timeElapsed += Time.deltaTime;
+            currentSpeed = Mathf.Lerp(0, DashSpeed, timeElapsed / AccelerationTime); // Smoothly increase speed
+            myRigidBody.velocity = new Vector2(direction * currentSpeed, myRigidBody.velocity.y);
+            yield return null;
+        }
+
+        // Maintain dash speed for the rest of the dash duration
+        timeElapsed = 0f;
+        while (timeElapsed < DashDuration - AccelerationTime)
+        {
+            timeElapsed += Time.deltaTime;
+            myRigidBody.velocity = new Vector2(direction * DashSpeed, myRigidBody.velocity.y);
+            yield return null;
+        }
+
+        // Stop dashing and return control
+        //dashPuff[0].SetActive(false);
+        //dashPuff[1].SetActive(false);
+        lastPuff.SetActive(false);
+        isDashing = false;
+    }
+
     private float TeleportTimer; 
     private void HealthRegen()
     {
@@ -153,7 +203,7 @@ public class MainCharacter : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.layer == 6)
         {
             
             isGrounded = true;
@@ -164,7 +214,7 @@ public class MainCharacter : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         
-        if (collision.gameObject.CompareTag("Ground"))
+        if (myRigidBody.velocity.y!=0 && collision.gameObject.layer==6)
         {
             isGrounded = false;
         }

@@ -68,7 +68,7 @@ public class MainGameLogic : MonoBehaviour
         else if(Input.GetKey(KeyCode.Alpha4)) { hotBarSelected = 4;}
         else if (Input.GetKey(KeyCode.Alpha5)) { hotBarSelected = 5;}
      
-       if(Input.GetKey(KeyCode.E)) {
+       if(Input.GetKey(KeyCode.I)) {
             
             CloseOpenInventory(false);
 

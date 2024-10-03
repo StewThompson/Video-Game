@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Drawing;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 using UnityEngine.UI;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class item
 {
@@ -34,6 +34,7 @@ public class InventoryItemSystem : MonoBehaviour
     
     public GameObject invetory;
     public GameObject hotbar;
+    public GameObject mainCharacter;
     private Dictionary<int, item> itemInSlots = new Dictionary<int, item>
     {
         
@@ -154,15 +155,15 @@ public class InventoryItemSystem : MonoBehaviour
         {5, null},
        
     };
-    private Dictionary<int, Vector2> pixelPosition = new Dictionary<int, Vector2> {
-    {1, new Vector2(715, 720) },  // hotbar
-    {2, new Vector2(812,720) },  // hotbar
-    {3, new Vector2(908, 720) },  // hotbar
-    {4, new Vector2(1005, 720) },  // hotbar
-    {5, new Vector2(1100, 720) },  // hotbar
-    {6, new Vector2(1110, 610) },  // Equipment
-    {7, new Vector2(1100, 520) },  // Equipment
-    {8, new Vector2(1100, 430) },  // Equipment
+    public Transform[] pixelPosition /*= new Dictionary<int, Vector2> {
+    {1, new Vector2((float)-2.7, (float)-0.1-3)},  // hotbar 55 0.5
+    {2, new Vector2((float)-1.7,(float)-0.1-3) },  // hotbar
+    {3, new Vector2((float).7, (float)-0.1-3) },  // hotbar
+    {4, new Vector2((float)-1.7, (float)-0.1-3) },  // hotbar
+    {5, new Vector2((float)-2.7, (float)-0.1-3) },  // hotbar
+    {6, new Vector2((float)-2.7, (float)-2.15-3) },  // Equipment
+    {7, new Vector2((float)-2.7, (float)-2.15-3) },  // Equipment
+    {8, new Vector2((float)-2.15, 430) },  // Equipment
     {9, new Vector2(715, 306) },  // Inventory Row 1
     {10, new Vector2(812, 306) }, // Inventory Row 1
     {11, new Vector2(908, 306) }, // Inventory Row 1
@@ -180,7 +181,7 @@ public class InventoryItemSystem : MonoBehaviour
     {23, new Vector2(1100, 120) }, // Inventory Row 3
         
 
-    };
+    }*/;
 
     private MainGameLogic mainGameLogic; 
     private Resolution ScreenResolution;
@@ -202,12 +203,13 @@ public class InventoryItemSystem : MonoBehaviour
     }
     private void Update()
     {
-    
-      if (!itemInAir && mainGameLogic.isInventoryOpen() && Input.GetMouseButtonDown(0))
+
+        if (!itemInAir && mainGameLogic.isInventoryOpen() && Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Finding Item to pickup...");
             pickedUpObjectID = pickUpItem();
             if(pickedUpObjectID != -1) { grabbedItem = itemInSlots[pickedUpObjectID].sprite;
-
+                Debug.Log($"{pickedUpObjectID}");
             }
           
         }
@@ -240,10 +242,12 @@ public class InventoryItemSystem : MonoBehaviour
         int slotPos = -1;
         for(int i = 1; i <= 23; i++)
         {
+ 
             if (itemInSlots[i] == null || itemInSlots[i].id == itemInSlots[id].id)
             {
-                float dist = Vector2.Distance(slotPositions[i], itemInSlots[id].sprite.transform.localPosition);
-                if(dist < shortestDistance) { nearestSlot = slotPositions[i]; slotPos = i; shortestDistance = dist; }
+                //Debug.Log("i is " + i);
+                float dist = Vector2.Distance(pixelPosition[i-1].localPosition, itemInSlots[id].sprite.transform.localPosition);
+                if(dist < shortestDistance) { nearestSlot = pixelPosition[i-1].position; slotPos = i; shortestDistance = dist; }
                 searchSucess = true;
             }
            
@@ -260,17 +264,27 @@ public class InventoryItemSystem : MonoBehaviour
     }
     private Vector2 followMouse(GameObject grabbedItem)
     {
+        
         Vector2 mousePos = Input.mousePosition;
-        float mouseActualX = 1920 * mousePos.x / ScreenResolution.width;
+        /*float mouseActualX = 1920 * mousePos.x / ScreenResolution.width;
         float mouseActualY = 1080 * mousePos.y / ScreenResolution.height;
         float translateXToReal = (mouseActualX - 960) / 110;
-        float translateYToReal = (mouseActualY - 540) / 90;
-       // Vector2 actual = Camera.main.ScreenToWorldPoint(mousePos);
+        float translateYToReal = (mouseActualY - 540) / 90;*/
+        RectTransform canvasRect = MyCanvas.GetComponent<RectTransform>();
+
+        // Convert the mouse position to local canvas space
+        Vector3 worldPoint;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            canvasRect,
+            mousePos,
+            mainCamera.GetComponent<Camera>(), // Pass the camera rendering the UI (if using world space canvas)
+            out worldPoint
+        );
 
 
 
-
-        return new Vector2(translateXToReal,translateYToReal+1);
+        return worldPoint-mainCamera.transform.position;
+       // return new Vector2(translateXToReal,translateYToReal+1);
     } 
 
     private bool itemInAir;
@@ -285,22 +299,52 @@ public class InventoryItemSystem : MonoBehaviour
         return -1;
 
     }
+    public Canvas MyCanvas;
+    public GameObject mainCamera;
     private int findSlot(Vector3 mousePosition)
     {
-        float mouseActualX = 1920*mousePosition.x/ScreenResolution.width;
-        float mouseActualY = 1080 * mousePosition.y / ScreenResolution.height;
-        float fixedDelta = -85;
+        //Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.nearClipPlane));
+        RectTransform canvasRect = MyCanvas.GetComponent<RectTransform>();
+
+        // Convert the mouse position to local canvas space
+        Vector3 worldPoint;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            canvasRect,
+            mousePosition,
+            mainCamera.GetComponent<Camera>(), // Pass the camera rendering the UI (if using world space canvas)
+            out worldPoint
+        );
+        //Debug.Log("WorldMousePos" + worldPoint);
+        //Debug.Log("AdjustPosX" + (worldPoint.x-mainCamera.transform.position.x)+ " and AdjustPosY" + (worldPoint.y - mainCamera.transform.position.y));
+        float fixedDelta = .5f;
         
-        for (int i = 1; i <= 23; i++)
+        for (int i = 0; i <= 22; i++)
         {
-            float xDiff = pixelPosition[i].x - mouseActualX;
-            float yDiff = pixelPosition[i].y - mouseActualY-55;
-            if ((xDiff >=fixedDelta && xDiff<0)&& (yDiff>=fixedDelta && yDiff < 0)) 
+            if (pixelPosition[i] != null)
             {
-                return i;
+                
+                Vector3 slotLocalPos = pixelPosition[i].localPosition; // Assuming it's a RectTransform
+                float xDiff = -mainCamera.transform.position.x + worldPoint.x;
+                float yDiff = -mainCamera.transform.position.y + worldPoint.y;
+                //Debug.Log("For i: " + i + " Xdiff: " + xDiff + " Ydiff: " + yDiff + " Pixel Position.x " + pixelPosition[i].localPosition.x);
+                if (isPointInside(fixedDelta, pixelPosition[i].localPosition, new Vector2(xDiff, yDiff)))
+                {
+                    Debug.Log("First slot found " + i);
+                    return i+1;
+                }
             }
         }
         return -1;
+    }
+    private bool isPointInside(float sideLength, Vector2 slotPosition, Vector2 mousePos)
+    {
+        float halfLength = sideLength / 2;
+        float xMin = slotPosition.x - sideLength;
+        float xMax = slotPosition.x + sideLength;
+        float yMin = slotPosition.y - sideLength;
+        float yMax = slotPosition.y + sideLength;
+       // Debug.Log("Xmin" + xMin + "Xmax" + xMax + "yMin" + yMin + "yMax" + yMax);
+        return (mousePos.x >= xMin && mousePos.x <= xMax && mousePos.y >= yMin && mousePos.y <= yMax);
     }
     public void AddItem(int id,int amount,int slot)
     {
@@ -326,7 +370,8 @@ public class InventoryItemSystem : MonoBehaviour
     private void Visualize(int Slot)
     {
         String itemName = idToName[itemInSlots[Slot].id];
-        Vector2 slotVector = slotPositions[Slot];
+        Vector2 slotVector = pixelPosition[Slot-1].localPosition;
+        slotVector = new Vector2(slotVector.x, slotVector.y-0.20f); //Change based on where icon needs to be
         float scale = idToScale[itemInSlots[Slot].id];
        
         GenerateSprite(slotVector, Slot, itemName,scale);
@@ -372,7 +417,7 @@ public class InventoryItemSystem : MonoBehaviour
             GameObject amountItem = (AssetDatabase.LoadAssetAtPath<GameObject>("Assets/UI/AmountItem.prefab"));
             GameObject label = Instantiate(amountItem) as GameObject;
             label.transform.SetParent(target.transform);
-            label.transform.localPosition = new Vector2(slotVector.x, slotVector.y - 0.15f);
+            label.transform.localPosition = new Vector2(slotVector.x, slotVector.y - 0.10f);
             label.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             label.GetComponent<Text>().text = itemInSlots[Slot].howMany.ToString();
             itemAmountTags[Slot] = label.GetComponent<Text>();
@@ -381,7 +426,7 @@ public class InventoryItemSystem : MonoBehaviour
             {
                 GameObject hotbarLabel = Instantiate(amountItem);
                 hotbarLabel.transform.SetParent(hotbar.transform);
-                hotbarLabel.transform.localPosition = new Vector2(HotBarSlots[Slot].x, HotBarSlots[Slot].y - 0.15f);
+                hotbarLabel.transform.localPosition = new Vector2(HotBarSlots[Slot].x, HotBarSlots[Slot].y - 0.10f);
                 hotbarLabel.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
                 hotbarLabel.GetComponent<Text>().text = itemInSlots[Slot].howMany.ToString();
                 hotBarTags[Slot] = hotbarLabel.GetComponent<Text>();

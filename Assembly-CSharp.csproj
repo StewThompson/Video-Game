@@ -114,6 +114,7 @@
     <Compile Include="Assets\Import\Cainos\Pixel Art Platformer - Village Props\Script\Chest.cs" />
     <Compile Include="Assets\Logic\GroundSpawn.cs" />
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\HorizontalGroupAttribute.cs" />
+    <Compile Include="Assets\Enemies\BossOneAI.cs" />
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\DisableIfAttribute.cs" />
     <Compile Include="Assets\WorldObjects\MiningScript.cs" />
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\ReadOnlyAttribute.cs" />
