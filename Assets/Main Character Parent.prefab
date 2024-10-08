@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 227206147869689872}
   - component: {fileID: 7047855349100698654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,9 +95,10 @@ GameObject:
   - component: {fileID: 6455373677977289868}
   - component: {fileID: 3796479059959453888}
   - component: {fileID: 5704252524194276415}
-  m_Layer: 0
+  - component: {fileID: 2965254354397753890}
+  m_Layer: 8
   m_Name: Main Character Parent
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +135,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 6
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -158,6 +159,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1add568489fe4fe40aae8b6c09bc5549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2965254354397753890
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630976367667913019}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4233b75feee510b419e2eed122f36e94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8462296969273837236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,9 +188,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6455373677977289868}
     m_Modifications:
+    - target: {fileID: 4485792951878332027, guid: 391b988534c7ef041baf346a6b10926c, type: 3}
+      propertyPath: m_Size.y
+      value: 8.399999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485792951878332027, guid: 391b988534c7ef041baf346a6b10926c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.00000034059798
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485792951878332027, guid: 391b988534c7ef041baf346a6b10926c, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 5919712907392479861, guid: 391b988534c7ef041baf346a6b10926c, type: 3}
       propertyPath: DashSpeed
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919712907392479861, guid: 391b988534c7ef041baf346a6b10926c, type: 3}
+      propertyPath: UpDashRatio
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 5919712907392479861, guid: 391b988534c7ef041baf346a6b10926c, type: 3}
       propertyPath: myRigidBody
@@ -233,6 +271,10 @@ PrefabInstance:
     - target: {fileID: 8975129461451727668, guid: 391b988534c7ef041baf346a6b10926c, type: 3}
       propertyPath: m_Name
       value: Main Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975129461451727668, guid: 391b988534c7ef041baf346a6b10926c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

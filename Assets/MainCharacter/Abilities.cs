@@ -217,15 +217,15 @@ public class Abilities : MonoBehaviour
             float tornadoSpeed = 10;
             cooldown2 = 2;
             player.useMana(2);
-            if (Input.mousePosition.x > 960)
+            if (Input.mousePosition.x > Screen.width/2)
             {
-                GameObject fireball = Instantiate(tornado, new Vector3(transform.position.x + 1.5f, transform.position.y+2, transform.position.z), transform.rotation);
+                GameObject fireball = Instantiate(tornado, new Vector3(transform.position.x + 1.5f, transform.position.y+1f, transform.position.z), transform.rotation);
                 Rigidbody2D fireballRb = fireball.GetComponent<Rigidbody2D>();
                 fireballRb.velocity = new Vector2(tornadoSpeed, 0);
             }
             else
             {
-                GameObject fireball = Instantiate(tornado, new Vector3(transform.position.x - 1.5f, transform.position.y+2, transform.position.z), new Quaternion(0, 180, 0, 0));
+                GameObject fireball = Instantiate(tornado, new Vector3(transform.position.x - 1.5f, transform.position.y+1f, transform.position.z), new Quaternion(0, 180, 0, 0));
                 Rigidbody2D fireballRb = fireball.GetComponent<Rigidbody2D>();
                 fireballRb.velocity = new Vector2(-tornadoSpeed, 0);
             }

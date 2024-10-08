@@ -11,11 +11,12 @@ public class tornadoLogic : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Debug.Log("Tornado Distance is " + tornadoDistance);
     }
     private void Update()
     {
-        tornadoDistance-= Time.deltaTime;
-        if(tornadoDistance < 0) { Destroy(gameObject); }
+        tornadoDistance -= Time.deltaTime;
+        if(tornadoDistance <= 0) { Destroy(gameObject);Debug.Log("Tornado timed out"); }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,8 +29,8 @@ public class tornadoLogic : MonoBehaviour
                 Debug.Log("Enemy hit by nado");
                 hit.GetComponent<EnemyAI>().damageEnemy(2);
                 Vector2 tornadoPosition = GetComponent<Rigidbody2D>().position;
-                collision.transform.gameObject.GetComponent<Rigidbody2D>().position = new Vector2(Mathf.Sign(rb.velocity.x)*Knockback+tornadoPosition.x, tornadoPosition.y);
+                collision.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(rb.velocity.x)*Knockback+tornadoPosition.x, collision.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y);
             }
-            else if (isGround) { Destroy(gameObject); }
+            else if (isGround) { Destroy(gameObject); Debug.Log("Tornado grounded"); }
     }
 }

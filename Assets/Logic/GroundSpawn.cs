@@ -14,6 +14,8 @@ public class GroundSpawn : MonoBehaviour
     public GameObject earth;
     public GameObject enemy;
     public GameObject rock;
+    public GameObject BossOne;
+    public GameObject BoulderSpawner;
     private float last;
     private float outPutVal;
     private GameObject groundSpawner;
@@ -24,6 +26,7 @@ public class GroundSpawn : MonoBehaviour
     private ArrayList groundLevelAtPoint = new();
     public int BossSpawnChance;
     private int CurrentMapLength;
+    public float HeightSeperation;
 
 
 
@@ -58,6 +61,7 @@ public class GroundSpawn : MonoBehaviour
         CurrentMapLength = groundLevelAtPoint.Count;
         if (!SpawnedArenaOne) { FirstBossSpawner();}
         if (last - bord.transform.position.x < 15){ SpawnNextChunk();}
+        //if (last < 500) { SpawnNextChunk(); }
 
     }
     private void SpawnNextChunk()
@@ -80,7 +84,7 @@ public class GroundSpawn : MonoBehaviour
             groundSpawner = Instantiate(ground, new Vector3(i + last, groundLevel, transform.position.z), transform.rotation);
             groundSpawner.transform.parent = transform;
             groundLevelAtPoint.Add(groundLevel);
-            groundSpawner = Instantiate(ground, new Vector3(i + last, groundLevel + 12, transform.position.z), transform.rotation);
+            groundSpawner = Instantiate(ground, new Vector3(i + last, groundLevel + HeightSeperation, transform.position.z), transform.rotation);
             groundSpawner.transform.parent = transform;
 
 
@@ -93,7 +97,7 @@ public class GroundSpawn : MonoBehaviour
             //{
             //  Instantiate(enemy, new Vector3(i+last, groundLevel + 5, 0), transform.rotation);
             //}
-
+            if (EnemySpawnChance == 10) { Instantiate(BoulderSpawner, new Vector3(i + last, groundLevel + HeightSeperation + 10, 0), transform.rotation); }
             if (EnemySpawnChance == 9)
             {
                 Instantiate(rock, new Vector3(i + last, groundLevel + 0.5f, 0), transform.rotation);
@@ -119,7 +123,7 @@ public class GroundSpawn : MonoBehaviour
             groundSpawner.transform.parent = transform;
             for (float x = groundLevel - 15; x < groundLevel; x++)
             {
-                earthSpawner = Instantiate(earth, new Vector3(i + last, x + 27, transform.position.z), transform.rotation);
+                earthSpawner = Instantiate(earth, new Vector3(i + last, x + HeightSeperation+12, transform.position.z), transform.rotation);
                 earthSpawner.transform.parent = transform;
                 earthSpawner = Instantiate(earth, new Vector3(i + last, x, transform.position.z), transform.rotation);
                 earthSpawner.transform.parent = transform;
@@ -150,6 +154,10 @@ public class GroundSpawn : MonoBehaviour
             groundLevelAtPoint.Add(groundLevel);
             groundSpawner = Instantiate(ground, new Vector3(i + last, groundLevel + 12, transform.position.z), transform.rotation);
             groundSpawner.transform.parent = transform;
+            if(ArenaOneSize/2 == i)
+            {
+                Instantiate(BossOne, new Vector3(i + last,groundLevel+4, transform.position.z), transform.rotation);
+            }
         }
 
         last = last + ArenaOneSize;

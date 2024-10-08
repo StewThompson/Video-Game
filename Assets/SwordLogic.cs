@@ -39,6 +39,17 @@ public class SwordLogic : MonoBehaviour
         }
         SwordSelfDestruct = true;
     }
+    public int SwordDamage;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject hit = collision.transform.gameObject;
+
+        if (hit.CompareTag("Enemy"))
+        {
+            Debug.Log("Enemy Hit by Sword");
+            hit.GetComponent<EnemyAI>().damageEnemy(SwordDamage);
+        }
+    }
 }
     
 

@@ -6,7 +6,7 @@ public class PlayerFacing : MonoBehaviour
 {
     void Update()
     {
-        if ((Input.mousePosition.x > 960))
+        if ((Input.mousePosition.x > Screen.width/2))
         {
 
             transform.localScale = new Vector3(1, 1, 1);

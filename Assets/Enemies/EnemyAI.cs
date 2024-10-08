@@ -13,9 +13,15 @@ public class EnemyAI : MonoBehaviour
     public float jumpHeight = 10;
     public Rigidbody2D enemy;
     private float attackDelay = 0;
-    private int health = 10;
+    public int health;
     public MainGameLogic logic;
     private Animator animator;
+    public bool jumpWalk;
+    public bool StandardWalk;
+    public float activationDistance;
+    public int AttackDamage;
+    
+
    
 
 
@@ -35,13 +41,48 @@ public class EnemyAI : MonoBehaviour
         {
             damageAnimationTimer -= Time.deltaTime;
         }
+        if (damageDelay > 0) { damageDelay -= Time.deltaTime; }
         else if (damageAnimationTimer <= 0) { animator.SetBool("IsDamaged", false); }
-        if (damageDelay > 0)
-        {
-            damageDelay -= Time.deltaTime;
-        }
+        if(jumpWalk) { jumpWalking(); }
+        else if (StandardWalk) { StandardWalking(); }
+        DealDamage(AttackDamage);
+        CheckHealth();
 
-        if (checkPlayerDistance() > 2 && checkPlayerDistance()<=10)
+    }
+    private void CheckHealth()
+    {
+        if (health <= 0) { Destroy(gameObject.transform.parent.gameObject); }
+    }
+    private void DealDamage(int damage) {
+        if (attackDelay > 0)
+        {
+            attackDelay -= Time.deltaTime;
+        }
+        else if (attackDelay <= 0 && checkPlayerDistance() < 2)
+        {
+            _player.takeDamage(2);
+            attackDelay = 2;
+        }
+    }
+    private float LastPosition;
+    private float MovementThreshold = 0.1f;
+    private void StandardWalking()
+    {
+        if (checkPlayerDistance() > 2 && checkPlayerDistance() <= activationDistance)
+        {
+
+            if (player.position.x - transform.position.x > 0) { enemy.velocity = new Vector2(enenmySpeed, enemy.velocity.y); }
+            else { enemy.velocity = new Vector2(-enenmySpeed, enemy.velocity.y); }
+            float NetChange = Math.Abs(transform.position.x - LastPosition);
+            if (NetChange < MovementThreshold )
+            {
+                enemy.velocity = new Vector2(enemy.velocity.x, jumpHeight);
+            }
+        }
+    }
+    private void jumpWalking()
+    {
+        if (checkPlayerDistance() > 2 && checkPlayerDistance() <= activationDistance)
         {
 
             if (player.position.x - transform.position.x > 0) { enemy.velocity = new Vector2(enenmySpeed, enemy.velocity.y); }
@@ -52,16 +93,6 @@ public class EnemyAI : MonoBehaviour
                 enemy.velocity = new Vector2(enemy.velocity.x, jumpHeight);
             }
         }
-        else if (attackDelay < 0 && checkPlayerDistance() < 2)
-        {
-            _player.takeDamage(2);
-            attackDelay = 2;
-        }
-        attackDelay -= Time.deltaTime;
-
-
-
-
     }
     private float checkPlayerDistance()
     {
@@ -88,8 +119,8 @@ public class EnemyAI : MonoBehaviour
     }
     */
     private float damageAnimationTimer;
-    private float damageDelay; 
-
+    private float damageDelay;
+    public int ScoreOnDeath;
     public void damageEnemy(int damage)
     {
         int HealthRemaining = health - damage;
@@ -101,12 +132,10 @@ public class EnemyAI : MonoBehaviour
             damageAnimationTimer = 0.8f;
             damageDelay = 1;
         }
-        else if(damageDelay>0) { damageDelay -=Time.deltaTime; }
-        else
+        else if (HealthRemaining<=0)
         {
-            
-            logic.scoreIncrease(1);
-            Destroy(gameObject.transform.parent.gameObject); 
+            health=HealthRemaining;
+            logic.scoreIncrease(ScoreOnDeath);
             
         }
     }

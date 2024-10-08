@@ -3,16 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\Stewart\\My project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|c:\\users\\stewart\\my project\\assets\\logic\\groundspawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Users\\Stewart\\My project\\assets\\logic\\groundspawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\logic\\groundspawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|c:\\users\\stewart\\my project\\assets\\enemies\\bossoneai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\enemies\\bossoneai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Users\\Stewart\\My project\\assets\\maincharacter\\maincharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\maincharacter\\maincharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Users\\Stewart\\My project\\assets\\swordlogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\swordlogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|c:\\users\\stewart\\my project\\assets\\logic\\inventoryitemsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\logic\\inventoryitemsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Users\\Stewart\\My project\\assets\\ideas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\ideas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Users\\Stewart\\My project\\assets\\enemies\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\enemies\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Users\\Stewart\\My project\\assets\\maincharacter\\playerfacing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\maincharacter\\playerfacing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|c:\\users\\stewart\\my project\\assets\\boulderdamagescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\boulderdamagescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|c:\\users\\stewart\\my project\\assets\\boulderspawnscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\boulderspawnscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Users\\Stewart\\My project\\assets\\faceplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\faceplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Users\\Stewart\\My project\\assets\\meleeweaponscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\meleeweaponscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Users\\Stewart\\My project\\assets\\teleporterscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\teleporterscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Users\\Stewart\\My project\\assets\\enemies\\bossoneai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\enemies\\bossoneai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +62,134 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 10,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InventoryItemSystem.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\Logic\\InventoryItemSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Logic\\InventoryItemSystem.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\Logic\\InventoryItemSystem.cs",
+              "RelativeToolTip": "Assets\\Logic\\InventoryItemSystem.cs",
+              "ViewState": "AQIAAFIBAAAAAAAAAAAowPQBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T15:53:11.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BoulderDamageScript.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\BoulderDamageScript.cs",
+              "RelativeDocumentMoniker": "Assets\\BoulderDamageScript.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\BoulderDamageScript.cs",
+              "RelativeToolTip": "Assets\\BoulderDamageScript.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T14:39:28.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BoulderSpawnScript.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\BoulderSpawnScript.cs",
+              "RelativeDocumentMoniker": "Assets\\BoulderSpawnScript.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\BoulderSpawnScript.cs",
+              "RelativeToolTip": "Assets\\BoulderSpawnScript.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwCEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T14:20:33.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlayerFacing.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\MainCharacter\\PlayerFacing.cs",
+              "RelativeDocumentMoniker": "Assets\\MainCharacter\\PlayerFacing.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\MainCharacter\\PlayerFacing.cs",
+              "RelativeToolTip": "Assets\\MainCharacter\\PlayerFacing.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T09:01:56.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TeleporterScript.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\TeleporterScript.cs",
+              "RelativeDocumentMoniker": "Assets\\TeleporterScript.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\TeleporterScript.cs",
+              "RelativeToolTip": "Assets\\TeleporterScript.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T08:55:27.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BossOneAI.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\Enemies\\BossOneAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Enemies\\BossOneAI.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\Enemies\\BossOneAI.cs",
+              "RelativeToolTip": "Assets\\Enemies\\BossOneAI.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAA1wCkAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-02T14:35:33.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FacePlayer.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\FacePlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\FacePlayer.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\FacePlayer.cs",
+              "RelativeToolTip": "Assets\\FacePlayer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T16:19:33.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MeleeWeaponScript.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\MeleeWeaponScript.cs",
+              "RelativeDocumentMoniker": "Assets\\MeleeWeaponScript.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\MeleeWeaponScript.cs",
+              "RelativeToolTip": "Assets\\MeleeWeaponScript.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAA3wEsAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T11:02:53.877Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SwordLogic.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\SwordLogic.cs",
+              "RelativeDocumentMoniker": "Assets\\SwordLogic.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\SwordLogic.cs",
+              "RelativeToolTip": "Assets\\SwordLogic.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAmwC4AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T11:01:53.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainCharacter.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\MainCharacter\\MainCharacter.cs",
+              "RelativeDocumentMoniker": "Assets\\MainCharacter\\MainCharacter.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\MainCharacter\\MainCharacter.cs",
+              "RelativeToolTip": "Assets\\MainCharacter\\MainCharacter.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAgwEEAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-03T12:21:45.622Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,35 +198,36 @@
               "RelativeDocumentMoniker": "Assets\\Logic\\GroundSpawn.cs",
               "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\Logic\\GroundSpawn.cs",
               "RelativeToolTip": "Assets\\Logic\\GroundSpawn.cs",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAqwFoAAAAzAAAA",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAkwJAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-03T09:09:58.862Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BossOneAI.cs",
-              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\Enemies\\BossOneAI.cs",
-              "RelativeDocumentMoniker": "Assets\\Enemies\\BossOneAI.cs",
-              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\Enemies\\BossOneAI.cs",
-              "RelativeToolTip": "Assets\\Enemies\\BossOneAI.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwDIAAABAAAAA",
+              "DocumentIndex": 5,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\Enemies\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Enemies\\EnemyAI.cs",
+              "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\Enemies\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\Enemies\\EnemyAI.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAYwIcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T14:35:33.352Z",
+              "WhenOpened": "2024-10-03T11:34:14.786Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Ideas.cs",
               "DocumentMoniker": "C:\\Users\\Stewart\\My project\\Assets\\Ideas.cs",
               "RelativeDocumentMoniker": "Assets\\Ideas.cs",
               "ToolTip": "C:\\Users\\Stewart\\My project\\Assets\\Ideas.cs",
               "RelativeToolTip": "Assets\\Ideas.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAMAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAwC0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T18:29:52.581Z"
+              "WhenOpened": "2024-03-18T18:29:52.581Z",
+              "EditorCaption": ""
             }
           ]
         }

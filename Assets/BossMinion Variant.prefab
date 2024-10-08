@@ -8,59 +8,47 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 226027615889438069, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9491d4b3f0bd6b441b03f021622371ae, type: 3}
-    - target: {fileID: 3298139782703736933, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 3298139782703736933, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5870527289249470162, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 5494229960601349699, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.971984
       objectReference: {fileID: 0}
-    - target: {fileID: 5870527289249470162, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 5494229960601349699, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.08576
       objectReference: {fileID: 0}
-    - target: {fileID: 5870527289249470162, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 5494229960601349699, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.0207202
       objectReference: {fileID: 0}
-    - target: {fileID: 5870527289249470162, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 5494229960601349699, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5870527289249470162, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 5494229960601349699, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5870527289249470162, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 5494229960601349699, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5870527289249470162, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 5494229960601349699, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5870527289249470162, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 5494229960601349699, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5870527289249470162, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 5494229960601349699, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5870527289249470162, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 5494229960601349699, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8279347736083735962, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+    - target: {fileID: 8043717672807210251, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}
       propertyPath: m_Name
       value: BossMinion Variant
       objectReference: {fileID: 0}
@@ -68,4 +56,4 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 29056c6d3fb3f2f46abd75c9cb755cef, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 3b65716e0e44b2e41b62bf70f63b268e, type: 3}

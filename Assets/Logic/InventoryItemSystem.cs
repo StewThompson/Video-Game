@@ -311,7 +311,7 @@ public class InventoryItemSystem : MonoBehaviour
         RectTransformUtility.ScreenPointToWorldPointInRectangle(
             canvasRect,
             mousePosition,
-            mainCamera.GetComponent<Camera>(), // Pass the camera rendering the UI (if using world space canvas)
+            mainCamera.GetComponent<Camera>(), 
             out worldPoint
         );
         //Debug.Log("WorldMousePos" + worldPoint);
@@ -323,7 +323,7 @@ public class InventoryItemSystem : MonoBehaviour
             if (pixelPosition[i] != null)
             {
                 
-                Vector3 slotLocalPos = pixelPosition[i].localPosition; // Assuming it's a RectTransform
+                Vector3 slotLocalPos = pixelPosition[i].localPosition; 
                 float xDiff = -mainCamera.transform.position.x + worldPoint.x;
                 float yDiff = -mainCamera.transform.position.y + worldPoint.y;
                 //Debug.Log("For i: " + i + " Xdiff: " + xDiff + " Ydiff: " + yDiff + " Pixel Position.x " + pixelPosition[i].localPosition.x);
@@ -371,8 +371,8 @@ public class InventoryItemSystem : MonoBehaviour
     {
         String itemName = idToName[itemInSlots[Slot].id];
         Vector2 slotVector = pixelPosition[Slot-1].localPosition;
-        slotVector = new Vector2(slotVector.x, slotVector.y-0.20f); //Change based on where icon needs to be
-        float scale = idToScale[itemInSlots[Slot].id];
+        slotVector = new Vector2(slotVector.x, slotVector.y-0.20f); //Change based on where icon needs to be i.e change 0.2 to a item var thats unique to each sprite
+        float scale = idToScale[itemInSlots[Slot].id];              //This is pretty dumb tho probably better off setting the rect transform center to where it needs to be
        
         GenerateSprite(slotVector, Slot, itemName,scale);
       
@@ -497,38 +497,4 @@ public class InventoryItemSystem : MonoBehaviour
         }
         else { Debug.Log("Not enough items to remove"); }
     }
-
-    /*public void GenerateHotbar()
-    {
-        for(int i=1; i<=5;i++)
-        {
-            if (itemInSlots[i] != null)
-            {
-                Transform itemTransform = itemInSlots[i].sprite.transform;
-                itemTransform.parent = hotbar.transform;
-                itemTransform.localPosition = HotBarSlots[i];
-
-                Transform labelTransform = itemInSlots[i].label.transform;
-                labelTransform.parent = hotbar.transform;
-                labelTransform.localPosition = new Vector2(HotBarSlots[i].x, HotBarSlots[i].y - 0.15f);
-            }
-
-        }
-    }
-    public void GenerateFirstFiveInventory()
-    {
-        for (int i = 1; i <= 5; i++)
-        {
-            if (itemInSlots[i] != null)
-            {
-                Transform itemTransform = itemInSlots[i].sprite.transform;
-                itemTransform.parent = invetory.transform;
-                itemTransform.localPosition = slotPositions[i];
-
-                Transform labelTransform = itemInSlots[i].label.transform;
-                labelTransform.parent = invetory.transform;
-                itemTransform.localPosition = new Vector2(slotPositions[i].x, slotPositions[i].y - 0.15f);
-            }
-        }
-    }*/
 }
