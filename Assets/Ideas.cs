@@ -9,13 +9,15 @@ public class Ideas : MonoBehaviour
      * Need to write a plot/script
      *  x Crafting System
      *  Inventory System
-     *      ->Bug when dragging items to different slots
+     *     x ->Bug when dragging items to different slots
      *      ->Items should drop on ground when tree, rock ,etc. broken
      *      ->General positioning fixes (may need to add a stored vector for positioning for each individual item or just standarize all item images) 
      *      ->Optimize inventory memory storage by decreasing amount of dictionaries (see InventoryItemSystem line 95)
+     *      -> Add the ability to drop item on another item and the other item is picked up
      *      
      *  x Optimize mining system using rays like teleport 
      *      ->Bug where multiple objects mined with one click
+     *      ->Require the correct tool (Pickaxe/Axe)
      *  x Dictionary for groundlevel location (for spawning objects) 
      *  x Sword needs to actually require a sword
      *  Fix health bar ->Maybe just turn them into actual bars simplifies the logic
@@ -44,6 +46,8 @@ public class Ideas : MonoBehaviour
      *      Meteor attack
      *      x Teleport dash
      *      Ultimate:Black Hole Sucks Everything in
+     *  Bosses
+     *      Domain Expansion ability
      *      
      *  Merchants
      *      Each different class has own merchant

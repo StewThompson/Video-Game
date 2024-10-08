@@ -63,7 +63,7 @@ public class MainCharacter : MonoBehaviour
     }
     void Update()
     {
-
+        //This update function is  a mess need to seperate it hard to understand
         // Vertical movement
         var inputX = Input.GetAxisRaw("Horizontal");
         if (!isDashing) { myRigidBody.velocity = new Vector2(inputX * lateralMoveSpeed, myRigidBody.velocity.y); }
@@ -79,6 +79,10 @@ public class MainCharacter : MonoBehaviour
             if (transform.parent.localScale.x > 0) { CreatePuff(1); }//dashPuff[1].SetActive(true);
             else { CreatePuff(0);  }//dashPuff[0].SetActive(true);
         }
+        else if(DashTimer<=0 && Input.GetKey(KeyCode.Space))
+        {
+            StartCoroutine(SmoothDash(2));
+        }
         else if (DashTimer > 0)
         {
             DashTimer -= Time.deltaTime;
@@ -89,9 +93,11 @@ public class MainCharacter : MonoBehaviour
         {   
             myRigidBody.velocity = new Vector2(myRigidBody.velocity.x, verticalMoveSpeed);
         }
+        
     
         anime.SetBool("IsWalking", inputX != 0);
         anime.SetBool("IsInAir", !isGrounded);
+        anime.SetBool("isDashing", isDashing);
 
         
         if(TeleportTimer<=0 && Input.GetKey(KeyCode.R)) {
@@ -108,6 +114,7 @@ public class MainCharacter : MonoBehaviour
     public float DashDuration;
     public float AccelerationTime;
     public float DashSpeed;
+    public float UpDashRatio;
     private bool isDashing;
     private IEnumerator SmoothDash(int direction)
     {
@@ -121,7 +128,8 @@ public class MainCharacter : MonoBehaviour
         {
             timeElapsed += Time.deltaTime;
             currentSpeed = Mathf.Lerp(0, DashSpeed, timeElapsed / AccelerationTime); // Smoothly increase speed
-            myRigidBody.velocity = new Vector2(direction * currentSpeed, myRigidBody.velocity.y);
+            if (direction < 2) { myRigidBody.velocity = new Vector2(direction * currentSpeed, myRigidBody.velocity.y); }
+            else { myRigidBody.velocity = new Vector2(myRigidBody.velocity.x, direction * currentSpeed/UpDashRatio); }
             yield return null;
         }
 
@@ -130,7 +138,8 @@ public class MainCharacter : MonoBehaviour
         while (timeElapsed < DashDuration - AccelerationTime)
         {
             timeElapsed += Time.deltaTime;
-            myRigidBody.velocity = new Vector2(direction * DashSpeed, myRigidBody.velocity.y);
+            if (direction < 2) { myRigidBody.velocity = new Vector2(direction * DashSpeed, myRigidBody.velocity.y); }
+            else { myRigidBody.velocity = new Vector2(myRigidBody.velocity.x ,direction * DashSpeed / UpDashRatio); }
             yield return null;
         }
 
@@ -199,6 +208,7 @@ public class MainCharacter : MonoBehaviour
 
             }
         }
+        Debug.Log("Player hit HP: "+ health);
        
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -214,7 +224,7 @@ public class MainCharacter : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         
-        if (myRigidBody.velocity.y!=0 && collision.gameObject.layer==6)
+        if (Mathf.Abs(myRigidBody.velocity.y) > 1f && collision.gameObject.layer==6)
         {
             isGrounded = false;
         }

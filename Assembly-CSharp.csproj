@@ -78,6 +78,7 @@
     <Compile Include="Assets\Ideas.cs" />
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\BlockquoteAttribute.cs" />
     <Compile Include="Assets\Logic\MiningLogic.cs" />
+    <Compile Include="Assets\BoulderDamageScript.cs" />
     <Compile Include="Assets\UI\Health\HealthDisplay.cs" />
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\TabGroupAttribute.cs" />
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\AssetsOnlyAttribute.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\TitleHeaderAttribute.cs" />
     <Compile Include="Assets\WorldObjects\MobSpawner\SpawnerBreakScript.cs" />
     <Compile Include="Assets\fire.cs" />
+    <Compile Include="Assets\MeleeWeaponScript.cs" />
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\GUIColorAttribute.cs" />
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\HideIfAttribute.cs" />
     <Compile Include="Assets\Import\Cainos\Common\Script\Utils\SecondOrderDynamics.cs" />
@@ -120,7 +122,9 @@
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\ReadOnlyAttribute.cs" />
     <Compile Include="Assets\DummyAI.cs" />
     <Compile Include="Assets\Logic\CraftingLogic.cs" />
+    <Compile Include="Assets\BoulderSpawnScript.cs" />
     <Compile Include="Assets\Logic\InventoryItemSystem.cs" />
+    <Compile Include="Assets\FacePlayer.cs" />
     <Compile Include="Assets\Import\Cainos\Third Party\Lucid Editor\Runtime\Attributes\LabelWidthAttribute.cs" />
     <Compile Include="Assets\Logic\StartGame.cs" />
     <Compile Include="Assets\WorldObjects\MinableObjectLogic.cs" />
